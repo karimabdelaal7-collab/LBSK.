@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LBSK</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo/logo.png" alt="LBSK Logo">
+        </div>
+
+        <nav>
+            <a href="#" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+            <a href="home.html" data-ar="بيتي" data-en="Homewear">بيتي</a>
+            <a href="#" data-ar="كاجوال" data-en="Casual">كاجوال</a>
+            <a href="#" data-ar="لانجري" data-en="Lingerie">لانجري</a>
+            <a href="#" data-ar="العروض" data-en="Offers">العروض</a>
+            <a href="#" data-ar="من نحن" data-en="About Us">من نحن</a>
+            <a href="#" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a>
+        </nav>
+
+        <div class="header-actions">
+            <div class="header-icons">
+                <button aria-label="بحث" data-ar-label="بحث" data-en-label="Search">🔍</button>
+                <button id="cartBtn" aria-label="سلة التسوق" data-ar-label="سلة التسوق" data-en-label="Cart">
+                    🛒 <span id="cartCount" class="cart-count">0</span>
+                </button>
+            </div>
+            <button id="langToggle" class="lang-btn" data-ar="EN" data-en="AR">EN</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1 data-ar="لبسك من LBSK" data-en="Your Style From LBSK">لبسك من LBSK</h1>
+            <p class="hero-categories" data-ar="بيتي • كاجوال • لانجري" data-en="Homewear • Casual • Lingerie">بيتي • كاجوال • لانجري</p>
+            <p class="hero-tagline" data-ar="افتحي دولابك و اختاري براحتك" data-en="Open your closet and choose with ease">افتحي دولابك و اختاري براحتك</p>
+            <a href="#" class="btn" data-ar="تسوقي الآن" data-en="Shop Now">تسوقي الآن</a>
+        </div>
+        <div class="hero-image">
+            <img src="logo/logo.png" alt="LBSK">
+        </div>
+    </section>
+
+    <section class="products">
+        <h2 data-ar="تسوقي حسب القسم" data-en="Shop by Category">تسوقي حسب القسم</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <a href="home.html" class="product-image-link">
+                    <div class="product-image">
+                        <img src="01/1.jpg" alt="بيتي">
+                    </div>
+                </a>
+                <h3 data-ar="بيتي" data-en="Homewear">بيتي</h3>
+                <a href="home.html" class="btn-small" data-ar="تسوقي القسم" data-en="Shop Category">تسوقي القسم</a>
+            </div>
+            <div class="product-card">
+                <div class="product-image"></div>
+                <h3 data-ar="كاجوال" data-en="Casual">كاجوال</h3>
+                <p class="price">380 <span data-ar="ج.م" data-en="EGP">ج.م</span></p>
+                <button class="btn-small add-to-cart"
+                        data-id="casual-1"
+                        data-name-ar="إطلالة كاجوال يومية"
+                        data-name-en="Everyday Casual Look"
+                        data-price="380"
+                        data-ar="أضيفي للسلة" data-en="Add to Cart">أضيفي للسلة</button>
+            </div>
+            <div class="product-card">
+                <div class="product-image"></div>
+                <h3 data-ar="لانجري" data-en="Lingerie">لانجري</h3>
+                <p class="price">320 <span data-ar="ج.م" data-en="EGP">ج.م</span></p>
+                <button class="btn-small add-to-cart"
+                        data-id="lingerie-1"
+                        data-name-ar="طقم لانجري ناعم"
+                        data-name-en="Soft Lingerie Set"
+                        data-price="320"
+                        data-ar="أضيفي للسلة" data-en="Add to Cart">أضيفي للسلة</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== لوحة السلة الجانبية ===== -->
+    <div id="cartOverlay" class="cart-overlay"></div>
+    <aside id="cartPanel" class="cart-panel">
+        <div class="cart-header">
+            <h3 data-ar="سلة التسوق" data-en="Your Cart">سلة التسوق</h3>
+            <button id="closeCart" class="close-cart">&times;</button>
+        </div>
+        <div id="cartItems" class="cart-items">
+            <p class="cart-empty" data-ar="السلة فارغة" data-en="Your cart is empty">السلة فارغة</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span data-ar="الإجمالي" data-en="Total">الإجمالي</span>
+                <span id="cartTotal">0 <span data-ar="ج.م" data-en="EGP">ج.م</span></span>
+            </div>
+            <a href="#" class="btn cart-checkout" data-ar="إتمام الطلب" data-en="Checkout">إتمام الطلب</a>
+        </div>
+    </aside>
+
+    <footer>
+        <p data-ar="© 2026 LBSK - جميع الحقوق محفوظة" data-en="© 2026 LBSK - All Rights Reserved">© 2026 LBSK - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -106,14 +106,14 @@ background:var(--primary);
 }
 
 .hero-image {
-    width: 45%;
+    width: 30%;
     display: flex;
     justify-content: center;
 }
 
 .hero-image img {
     width: 100%;
-    max-width: 500px;
+    max-width: 280px;
 }
 .logo img{
     width: 170px;

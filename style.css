@@ -51,12 +51,13 @@ nav a:hover {
     color: #d16b86;
 }
 .hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 85vh;
-    padding: 60px 8%;
-    background: #f8f5f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  min-height: 85vh;
+  padding: 60px 8%;
+  background: #f8f5f2;
 }
 
 .hero-text {
@@ -612,11 +613,11 @@ body.lang-en .products {
     }
 
     .logo img {
-        width: auto;
-        height: 45px;
-        max-width: 120px;
-        object-fit: contain;
-    }
+  width: auto;
+  height: 65px;
+  max-width: 160px;
+  object-fit: contain;
+}
 
     nav {
         order: 3;

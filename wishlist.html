@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المفضلة | LBSK</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="logo/logo.png" alt="LBSK Logo"></a>
+        </div>
+
+        <nav>
+            <a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+            <a href="home.html" data-ar="بيتي" data-en="Homewear">بيتي</a>
+            <a href="casual.html" data-ar="كاجوال" data-en="Casual">كاجوال</a>
+            <a href="soon.html?cat=lingerie" data-ar="لانجري" data-en="Lingerie">لانجري</a>
+            <a href="#" data-ar="العروض" data-en="Offers">العروض</a>
+            <a href="#" data-ar="من نحن" data-en="About Us">من نحن</a>
+            <a href="#" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a>
+        </nav>
+
+        <div class="header-actions">
+            <div class="header-icons">
+                <button aria-label="بحث" data-ar-label="بحث" data-en-label="Search">🔍</button>
+                <button id="wishBtn" class="active-page" aria-label="المفضلة" data-ar-label="المفضلة" data-en-label="Wishlist">
+                    ♥ <span id="wishCount" class="cart-count">0</span>
+                </button>
+                <button id="cartBtn" aria-label="سلة التسوق" data-ar-label="سلة التسوق" data-en-label="Cart">
+                    🛒 <span id="cartCount" class="cart-count">0</span>
+                </button>
+            </div>
+            <button id="langToggle" class="lang-btn" data-ar="EN" data-en="AR">EN</button>
+        </div>
+    </header>
+
+    <section class="page-title">
+        <h1 data-ar="المفضلة" data-en="Wishlist">المفضلة</h1>
+        <p data-ar="كل المنتجات اللي عجباكي في مكان واحد" data-en="All your favorite picks in one place">كل المنتجات اللي عجباكي في مكان واحد</p>
+    </section>
+
+    <section class="products">
+        <div id="wishGrid" class="products-grid"></div>
+    </section>
+
+    <div id="cartOverlay" class="cart-overlay"></div>
+    <aside id="cartPanel" class="cart-panel">
+        <div class="cart-header">
+            <h3 data-ar="سلة التسوق" data-en="Your Cart">سلة التسوق</h3>
+            <button id="closeCart" class="close-cart">&times;</button>
+        </div>
+        <div id="cartItems" class="cart-items">
+            <p class="cart-empty" data-ar="السلة فارغة" data-en="Your cart is empty">السلة فارغة</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span data-ar="الإجمالي" data-en="Total">الإجمالي</span>
+                <span id="cartTotal">0 <span data-ar="ج.م" data-en="EGP">ج.م</span></span>
+            </div>
+            <a href="#" class="btn cart-checkout" data-ar="إتمام الطلب" data-en="Checkout">إتمام الطلب</a>
+        </div>
+    </aside>
+
+    <footer>
+        <div class="footer-social">
+            <a href="https://www.facebook.com/share/18xCmk6Ujb/" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/lbsk.eg?igsh=bmkwaXdveTJoZzZm" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://wa.me/message/K5X6AYVYEHSWN1" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.3-1.39a9.9 9.9 0 0 0 4.69 1.19h.01c5.46 0 9.9-4.45 9.9-9.9C21.96 6.45 17.5 2 12.04 2zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.74-2.09 1-2.38.26-.28.58-.35.77-.35s.38 0 .55.01c.18.01.41-.07.64.49.24.58.81 2 .88 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.52.72 1.78.85.26.14.44.2.5.31.06.12.06.68-.18 1.36z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@lbsk75?_r=1&_t=ZS-98K8WUINO8P" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.93-.85-1.5-2.07-1.5-3.42h-3.1v13.4c0 1.47-1.19 2.66-2.66 2.66-1.47 0-2.66-1.19-2.66-2.66 0-1.47 1.19-2.66 2.66-2.66.28 0 .55.05.8.13V9.99a5.7 5.7 0 0 0-.8-.06 5.76 5.76 0 1 0 5.76 5.76V9.4a8.75 8.75 0 0 0 5.1 1.64V7.94a5.35 5.35 0 0 1-3.6-2.12z"/></svg>
+            </a>
+            <a href="#" target="_blank" rel="noopener" aria-label="Telegram" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 4.5 2.7 11.9c-1.1.45-1.1 1.07-.2 1.35l4.8 1.5 1.85 5.6c.23.6.4.85.8.85.32 0 .47-.15.65-.33l1.7-1.63 3.5 2.58c.65.36 1.1.17 1.28-.6l2.5-11.7c.25-1.05-.4-1.53-1.08-1.02z"/></svg>
+            </a>
+        </div>
+        <p data-ar="© 2026 LBSK - جميع الحقوق محفوظة" data-en="© 2026 LBSK - All Rights Reserved">© 2026 LBSK - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="wishlist.js"></script>
+</body>
+
+</html>

@@ -141,14 +141,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderWishIcons() {
-        if (wishCountEl) wishCountEl.textContent = wishlist.length;
-        document.querySelectorAll(".wish-btn").forEach((btn) => {
-            btn.classList.toggle("active", isWished(btn.dataset.id));
-        });
-        if (typeof window.renderWishlistPage === "function") {
-            window.renderWishlistPage();
-        }
-    }
+  if (wishCountEl) wishCountEl.textContent = wishlist.length;
+  document.querySelectorAll(".wish-btn").forEach((btn) => {
+    const active = isWished(btn.dataset.id);
+    btn.classList.toggle("active", active);
+    btn.textContent = active ? "♥" : "♡";
+  });
+  if (typeof window.renderWishlistPage === "function") {
+    window.renderWishlistPage();
+  }
+}
 
     if (wishBtn) {
         wishBtn.addEventListener("click", () => {

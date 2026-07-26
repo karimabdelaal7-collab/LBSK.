@@ -832,6 +832,7 @@ body.lang-en .wish-btn {
 .product-actions {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 14px;
     margin-bottom: 20px;
 }
@@ -856,4 +857,50 @@ body.lang-en .wish-btn {
 
 #wishBtn.active-page {
     color: var(--primary-dark);
+}
+
+/* ===== زرار المشاركة ===== */
+.share-btn {
+    position: static;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #f7f6f4;
+    border: none;
+    cursor: pointer;
+    font-size: 19px;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.share-btn:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* ===== رسالة تأكيد صغيرة (Toast) ===== */
+.lbsk-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: rgba(45, 45, 45, 0.92);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 200;
+    white-space: nowrap;
+}
+
+.lbsk-toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
 }

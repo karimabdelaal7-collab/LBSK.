@@ -1,4 +1,4 @@
-// ===== main.js: اللغة + السلة =====
+// ===== main.js: اللغة + السلة + المفضلة (يعمل في كل صفحات الموقع) =====
 
 document.addEventListener("DOMContentLoaded", () => {
     let currentLang = "ar";
@@ -23,16 +23,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function openCart() {
+        if (!cartPanel) return;
         cartPanel.classList.add("active");
         cartOverlay.classList.add("active");
     }
 
     function hideCart() {
+        if (!cartPanel) return;
         cartPanel.classList.remove("active");
         cartOverlay.classList.remove("active");
     }
 
     function renderCart() {
+        if (!cartCountEl) return;
         const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
         cartCountEl.textContent = totalQty;
 
@@ -52,28 +55,18 @@ document.addEventListener("DOMContentLoaded", () => {
                         <h4>${name}</h4>
                         <div class="cart-item-price">${item.price} ${currentLang === "ar" ? "ج.م" : "EGP"}</div>
                         <div class="cart-item-qty">
-                            <button class="qty-btn" data-action="dec" data-id="${item.id}">-</button>
+                            <button class="qty-btn" data-cart-action="dec" data-cart-id="${item.id}">-</button>
                             <span>${item.qty}</span>
-                            <button class="qty-btn" data-action="inc" data-id="${item.id}">+</button>
+                            <button class="qty-btn" data-cart-action="inc" data-cart-id="${item.id}">+</button>
                         </div>
                     </div>
-                    <button class="cart-item-remove" data-action="remove" data-id="${item.id}">&times;</button>
+                    <button class="cart-item-remove" data-cart-action="remove" data-cart-id="${item.id}">&times;</button>
                 </div>`;
             })
             .join("");
 
         const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
         cartTotalEl.innerHTML = `${total} <span>${currentLang === "ar" ? "ج.م" : "EGP"}</span>`;
-
-        cartItemsEl.querySelectorAll("[data-action]").forEach((el) => {
-            el.addEventListener("click", () => {
-                const id = el.dataset.id;
-                const action = el.dataset.action;
-                if (action === "inc") changeQty(id, 1);
-                if (action === "dec") changeQty(id, -1);
-                if (action === "remove") removeItem(id);
-            });
-        });
     }
 
     function changeQty(id, delta) {
@@ -87,37 +80,107 @@ document.addEventListener("DOMContentLoaded", () => {
         renderCart();
     }
 
-    function removeItem(id) {
+    function removeCartItem(id) {
         cart = cart.filter((i) => i.id !== id);
         saveCart();
         renderCart();
     }
 
-    cartBtn.addEventListener("click", openCart);
-    closeCart.addEventListener("click", hideCart);
-    cartOverlay.addEventListener("click", hideCart);
+    function addToCart(data) {
+        const existing = cart.find((item) => item.id === data.id);
+        if (existing) {
+            existing.qty += 1;
+        } else {
+            cart.push({ id: data.id, nameAr: data.nameAr, nameEn: data.nameEn, price: data.price, qty: 1 });
+        }
+        saveCart();
+        renderCart();
+        openCart();
+    }
 
-    document.querySelectorAll(".add-to-cart").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            const id = btn.dataset.id;
-            const nameAr = btn.dataset.nameAr;
-            const nameEn = btn.dataset.nameEn;
-            const price = parseFloat(btn.dataset.price);
+    if (cartBtn) cartBtn.addEventListener("click", openCart);
+    if (closeCart) closeCart.addEventListener("click", hideCart);
+    if (cartOverlay) cartOverlay.addEventListener("click", hideCart);
 
-            const existing = cart.find((item) => item.id === id);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ id, nameAr, nameEn, price, qty: 1 });
-            }
-            saveCart();
-            renderCart();
-            openCart();
+    // ===== عناصر المفضلة (Wishlist) =====
+    const wishBtn = document.getElementById("wishBtn");
+    const wishCountEl = document.getElementById("wishCount");
+
+    let wishlist = JSON.parse(localStorage.getItem("lbsk-wishlist") || "[]");
+
+    function saveWishlist() {
+        localStorage.setItem("lbsk-wishlist", JSON.stringify(wishlist));
+    }
+
+    function isWished(id) {
+        return wishlist.some((w) => w.id === id);
+    }
+
+    function toggleWishlist(data) {
+        if (isWished(data.id)) {
+            wishlist = wishlist.filter((w) => w.id !== data.id);
+        } else {
+            wishlist.push(data);
+        }
+        saveWishlist();
+        renderWishIcons();
+    }
+
+    function renderWishIcons() {
+        if (wishCountEl) wishCountEl.textContent = wishlist.length;
+        document.querySelectorAll(".wish-btn").forEach((btn) => {
+            btn.classList.toggle("active", isWished(btn.dataset.id));
         });
+        if (typeof window.renderWishlistPage === "function") {
+            window.renderWishlistPage();
+        }
+    }
+
+    if (wishBtn) {
+        wishBtn.addEventListener("click", () => {
+            window.location.href = "wishlist.html";
+        });
+    }
+
+    document.addEventListener("click", (e) => {
+        const cartActionBtn = e.target.closest("[data-cart-action]");
+        if (cartActionBtn) {
+            const id = cartActionBtn.dataset.cartId;
+            const action = cartActionBtn.dataset.cartAction;
+            if (action === "inc") changeQty(id, 1);
+            if (action === "dec") changeQty(id, -1);
+            if (action === "remove") removeCartItem(id);
+            return;
+        }
+
+        const addBtn = e.target.closest(".add-to-cart");
+        if (addBtn) {
+            e.preventDefault();
+            addToCart({
+                id: addBtn.dataset.id,
+                nameAr: addBtn.dataset.nameAr,
+                nameEn: addBtn.dataset.nameEn,
+                price: parseFloat(addBtn.dataset.price)
+            });
+            return;
+        }
+
+        const wishToggleBtn = e.target.closest(".wish-btn");
+        if (wishToggleBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleWishlist({
+                id: wishToggleBtn.dataset.id,
+                nameAr: wishToggleBtn.dataset.nameAr,
+                nameEn: wishToggleBtn.dataset.nameEn,
+                price: parseFloat(wishToggleBtn.dataset.price),
+                image: wishToggleBtn.dataset.image,
+                cat: wishToggleBtn.dataset.cat
+            });
+            return;
+        }
     });
 
-    // ===== تبديل اللغة =====
     function applyLanguage(lang) {
         currentLang = lang;
         htmlEl.setAttribute("lang", lang);
@@ -134,18 +197,36 @@ document.addEventListener("DOMContentLoaded", () => {
             el.setAttribute("title", label);
         });
 
-        langToggle.textContent = lang === "ar" ? langToggle.getAttribute("data-ar") : langToggle.getAttribute("data-en");
+        if (langToggle) {
+            langToggle.textContent = lang === "ar" ? langToggle.getAttribute("data-ar") : langToggle.getAttribute("data-en");
+        }
 
         renderCart();
+        if (typeof window.renderWishlistPage === "function") {
+            window.renderWishlistPage();
+        }
     }
 
-    langToggle.addEventListener("click", () => {
-        const nextLang = htmlEl.getAttribute("lang") === "ar" ? "en" : "ar";
-        applyLanguage(nextLang);
-        localStorage.setItem("lbsk-lang", nextLang);
-    });
+    if (langToggle) {
+        langToggle.addEventListener("click", () => {
+            const nextLang = htmlEl.getAttribute("lang") === "ar" ? "en" : "ar";
+            applyLanguage(nextLang);
+            localStorage.setItem("lbsk-lang", nextLang);
+        });
+    }
 
-    // ===== التشغيل الأولي =====
+    window.LBSK = {
+        getCart: () => cart,
+        addToCart,
+        removeCartItem,
+        changeQty,
+        getWishlist: () => wishlist,
+        toggleWishlist,
+        isWished,
+        getCurrentLang: () => currentLang
+    };
+
     const savedLang = localStorage.getItem("lbsk-lang") || "ar";
     applyLanguage(savedLang);
+    renderWishIcons();
 });

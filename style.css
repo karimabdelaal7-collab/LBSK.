@@ -55,9 +55,9 @@ nav a:hover {
   align-items: center;
   justify-content: center;
   gap: 60px;
-  min-height: 85vh;
-  padding: 60px 8%;
-  background: #f8f5f2;
+  min-height: 50vh;
+  padding: 40px 8%;
+  background: #FAF6F1;
 }
 
 .hero-text {

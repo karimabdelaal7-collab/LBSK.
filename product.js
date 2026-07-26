@@ -57,6 +57,9 @@
                         data-image="${images[0] || ''}"
                         data-cat="${cat}"
                         aria-label="أضيفي للمفضلة">♡</button>
+                <button class="share-btn"
+                        data-name="${product.nameAr}"
+                        aria-label="مشاركة المنتج">📤</button>
             </div>
             <a href="${backLink}" class="back-link" data-ar="${backTextAr}" data-en="${backTextEn}">${backTextAr}</a>
         </div>

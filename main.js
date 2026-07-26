@@ -3,11 +3,26 @@
 document.addEventListener("DOMContentLoaded", () => {
     let currentLang = "ar";
 
+    function showToast(message) {
+        let toast = document.getElementById("lbskToast");
+        if (!toast) {
+            toast = document.createElement("div");
+            toast.id = "lbskToast";
+            toast.className = "lbsk-toast";
+            document.body.appendChild(toast);
+        }
+        toast.textContent = message;
+        toast.classList.add("show");
+        clearTimeout(toast._hideTimer);
+        toast._hideTimer = setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2200);
+    }
+
     const htmlEl = document.documentElement;
     const bodyEl = document.body;
     const langToggle = document.getElementById("langToggle");
 
-    // ===== عناصر السلة =====
     const cartBtn = document.getElementById("cartBtn");
     const closeCart = document.getElementById("closeCart");
     const cartOverlay = document.getElementById("cartOverlay");
@@ -102,7 +117,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (closeCart) closeCart.addEventListener("click", hideCart);
     if (cartOverlay) cartOverlay.addEventListener("click", hideCart);
 
-    // ===== عناصر المفضلة (Wishlist) =====
     const wishBtn = document.getElementById("wishBtn");
     const wishCountEl = document.getElementById("wishCount");
 
@@ -177,6 +191,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 image: wishToggleBtn.dataset.image,
                 cat: wishToggleBtn.dataset.cat
             });
+            return;
+        }
+
+        const shareBtn = e.target.closest(".share-btn");
+        if (shareBtn) {
+            e.preventDefault();
+            const shareData = {
+                title: shareBtn.dataset.name ? shareBtn.dataset.name + " | LBSK" : "LBSK",
+                text: shareBtn.dataset.name ? `شوفي المنتج ده: ${shareBtn.dataset.name}` : "شوفي المنتج ده على LBSK",
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(shareData.url).then(() => {
+                    showToast(currentLang === "ar" ? "تم نسخ الرابط" : "Link copied");
+                }).catch(() => {
+                    showToast(currentLang === "ar" ? "تعذر نسخ الرابط" : "Could not copy link");
+                });
+            }
             return;
         }
     });

@@ -1,12 +1,19 @@
-// ===== product.js: صفحة تفاصيل المنتج مع سلايدر الصور =====
+// ===== product.js: صفحة تفاصيل المنتج مع سلايدر الصور (تدعم أكثر من قسم) =====
 
 (function () {
     const container = document.getElementById("productDetail");
-    if (!container || typeof homeProducts === "undefined") return;
+    if (!container) return;
 
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
-    const product = homeProducts.find((p) => p.id === id);
+    const cat = params.get("cat") || "home";
+
+    let list = [];
+    if (cat === "casual" && typeof casualProducts !== "undefined") list = casualProducts;
+    else if (cat === "lingerie" && typeof lingerieProducts !== "undefined") list = lingerieProducts;
+    else if (typeof homeProducts !== "undefined") list = homeProducts;
+
+    const product = list.find((p) => p.id === id);
 
     if (!product) {
         container.innerHTML = `<p class="not-found" data-ar="المنتج غير موجود" data-en="Product not found">المنتج غير موجود</p>`;
@@ -16,6 +23,9 @@
     document.title = product.nameAr + " | LBSK";
 
     const images = product.images && product.images.length ? product.images : [];
+    const backLink = cat === "casual" ? "casual.html" : cat === "lingerie" ? "lingerie.html" : "home.html";
+    const backTextAr = cat === "casual" ? "← الرجوع لقسم كاجوال" : cat === "lingerie" ? "← الرجوع لقسم لانجري" : "← الرجوع لقسم بيتي";
+    const backTextEn = cat === "casual" ? "← Back to Casual" : cat === "lingerie" ? "← Back to Lingerie" : "← Back to Homewear";
 
     container.innerHTML = `
         <div class="product-gallery">
@@ -32,13 +42,23 @@
         <div class="product-info">
             <h1 data-ar="${product.nameAr}" data-en="${product.nameEn}">${product.nameAr}</h1>
             <p class="price">${product.price} <span data-ar="ج.م" data-en="EGP">ج.م</span></p>
-            <button class="btn add-to-cart"
-                    data-id="${product.id}"
-                    data-name-ar="${product.nameAr}"
-                    data-name-en="${product.nameEn}"
-                    data-price="${product.price}"
-                    data-ar="أضيفي للسلة" data-en="Add to Cart">أضيفي للسلة</button>
-            <a href="home.html" class="back-link" data-ar="← الرجوع لقسم بيتي" data-en="← Back to Homewear">← الرجوع لقسم بيتي</a>
+            <div class="product-actions">
+                <button class="btn add-to-cart"
+                        data-id="${product.id}"
+                        data-name-ar="${product.nameAr}"
+                        data-name-en="${product.nameEn}"
+                        data-price="${product.price}"
+                        data-ar="أضيفي للسلة" data-en="Add to Cart">أضيفي للسلة</button>
+                <button class="wish-btn wish-btn-detail"
+                        data-id="${product.id}"
+                        data-name-ar="${product.nameAr}"
+                        data-name-en="${product.nameEn}"
+                        data-price="${product.price}"
+                        data-image="${images[0] || ''}"
+                        data-cat="${cat}"
+                        aria-label="أضيفي للمفضلة">♡</button>
+            </div>
+            <a href="${backLink}" class="back-link" data-ar="${backTextAr}" data-en="${backTextEn}">${backTextAr}</a>
         </div>
     `;
 

@@ -42,6 +42,8 @@
         <div class="product-info">
             <h1 data-ar="${product.nameAr}" data-en="${product.nameEn}">${product.nameAr}</h1>
             <p class="price">${product.price} <span data-ar="ج.م" data-en="EGP">ج.م</span></p>
+            ${product.size ? `<p class="product-size"><strong data-ar="المقاس:" data-en="Size:">المقاس:</strong> ${product.size}</p>` : ""}
+            ${product.description ? `<p class="product-desc">${product.description}</p>` : ""}
             <div class="product-actions">
                 <button class="btn add-to-cart"
                         data-id="${product.id}"
@@ -59,7 +61,7 @@
                         aria-label="أضيفي للمفضلة">♡</button>
                 <button class="share-btn"
                         data-name="${product.nameAr}"
-                        aria-label="مشاركة المنتج">↗️</button>
+                        aria-label="مشاركة المنتج">📤</button>
             </div>
             <a href="${backLink}" class="back-link" data-ar="${backTextAr}" data-en="${backTextEn}">${backTextAr}</a>
         </div>

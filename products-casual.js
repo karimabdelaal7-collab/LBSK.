@@ -1,4 +1,4 @@
-// بيانات منتجات قسم كاجوال — مسارات مطابقة لهيكل الرفع على GitHub (مباشرة في جذر الموقع)
+// بيانات منتجات قسم كاجوال — أسماء فولدرات مميزة (c01-c35) لتفادي التصادم مع بيتي
 const casualProducts = [
   {
     id: "casual-01",
@@ -7,7 +7,7 @@ const casualProducts = [
     price: 550,
     size: "من 70 كيلو ل 85 كيلو",
     description: "كتان فرنساوي معالج مستورد عالى الجودة",
-    images: ["01/1.jpg", "01/2.jpg"]
+    images: ["c01/1.jpg", "c01/2.jpg"]
   },
   {
     id: "casual-02",
@@ -16,7 +16,7 @@ const casualProducts = [
     price: 400,
     size: "من 75 كيلو ل 85 كيلو",
     description: "كتان فرنساوي معالج مستورد عالى الجودة",
-    images: ["02/1.jpg", "02/2.jpg", "02/3.jpg", "02/4.jpg", "02/5.jpg", "02/6.jpg", "02/7.jpg"]
+    images: ["c02/1.jpg", "c02/2.jpg", "c02/3.jpg", "c02/4.jpg", "c02/5.jpg", "c02/6.jpg", "c02/7.jpg"]
   },
   {
     id: "casual-03",
@@ -25,7 +25,7 @@ const casualProducts = [
     price: 600,
     size: "من 65 كيلو ل 85 كيلو",
     description: "تريكو شبك مستورد تركي عالى الجودة",
-    images: ["03/1.jpg", "03/2.jpg", "03/3.jpg", "03/4.jpg"]
+    images: ["c03/1.jpg", "c03/2.jpg", "c03/3.jpg", "c03/4.jpg"]
   },
   {
     id: "casual-04",
@@ -34,7 +34,7 @@ const casualProducts = [
     price: 450,
     size: "من 85 كيلو ل 90 كيلو",
     description: "سي واي مستورد عالى الجودة",
-    images: ["04/1.jpg", "04/2.jpg", "04/3.jpg", "04/4.jpg"]
+    images: ["c04/1.jpg", "c04/2.jpg", "c04/3.jpg", "c04/4.jpg"]
   },
   {
     id: "casual-05",
@@ -43,7 +43,7 @@ const casualProducts = [
     price: 300,
     size: "من 65الي90كيلو",
     description: "فريسكا ايطالي مستورد عالى الجودة",
-    images: ["05/1.jpg", "05/2.jpg", "05/3.jpg", "05/4.jpg", "05/5.jpg", "05/6.jpg"]
+    images: ["c05/1.jpg", "c05/2.jpg", "c05/3.jpg", "c05/4.jpg", "c05/5.jpg", "c05/6.jpg"]
   },
   {
     id: "casual-06",
@@ -52,7 +52,7 @@ const casualProducts = [
     price: 620,
     size: "ون سايز تلبيس ل85.90ك",
     description: "روزالين ايطالى عالى الجودة وماتريال الشيميز * رويال عالى الجودة",
-    images: ["06/1.jpg", "06/2.jpg", "06/3.jpg"]
+    images: ["c06/1.jpg", "c06/2.jpg", "c06/3.jpg"]
   },
   {
     id: "casual-07",
@@ -61,7 +61,7 @@ const casualProducts = [
     price: 500,
     size: "من 65 كيلو ل 85 كيلو",
     description: "ماتريال البليزر سي واي مستورد عالى الجودة ماتريال الچيبه سي واي مستورد عالى الجودة",
-    images: ["07/1.jpg", "07/2.jpg", "07/3.jpg", "07/4.jpg", "07/5.jpg"]
+    images: ["c07/1.jpg", "c07/2.jpg", "c07/3.jpg", "c07/4.jpg", "c07/5.jpg"]
   },
   {
     id: "casual-08",
@@ -70,7 +70,7 @@ const casualProducts = [
     price: 500,
     size: "من 50ك لـ 85ك",
     description: "فريسكا ايطالي مستورد مستورد عالي الجودة ماتريال التوب توب موج البحر",
-    images: ["08/1.jpg", "08/2.jpg", "08/3.jpg"]
+    images: ["c08/1.jpg", "c08/2.jpg", "c08/3.jpg"]
   },
   {
     id: "casual-09",
@@ -79,7 +79,7 @@ const casualProducts = [
     price: 700,
     size: "من65الي 85ك",
     description: "جينز مغسول مستورد",
-    images: ["09/1.jpg", "09/2.jpg", "09/3.jpg"]
+    images: ["c09/1.jpg", "c09/2.jpg", "c09/3.jpg"]
   },
   {
     id: "casual-10",
@@ -88,7 +88,7 @@ const casualProducts = [
     price: 700,
     size: "من65الي 85ك",
     description: "جينز مغسول مستورد",
-    images: ["10/1.jpg", "10/2.jpg"]
+    images: ["c10/1.jpg", "c10/2.jpg"]
   },
   {
     id: "casual-11",
@@ -97,7 +97,7 @@ const casualProducts = [
     price: 500,
     size: "65ك لـ 95ك",
     description: "---",
-    images: ["11/1.jpg", "11/2.jpg", "11/3.jpg", "11/4.jpg", "11/5.jpg", "11/6.jpg", "11/7.jpg", "11/8.jpg", "11/9.jpg"]
+    images: ["c11/1.jpg", "c11/2.jpg", "c11/3.jpg", "c11/4.jpg", "c11/5.jpg", "c11/6.jpg", "c11/7.jpg", "c11/8.jpg", "c11/9.jpg"]
   },
   {
     id: "casual-12",
@@ -106,7 +106,7 @@ const casualProducts = [
     price: 500,
     size: "65ك لـ 85ك",
     description: "ستان بيور مطبوع ناعم مستورد",
-    images: ["12/1.jpg", "12/2.jpg", "12/3.jpg", "12/4.jpg"]
+    images: ["c12/1.jpg", "c12/2.jpg", "c12/3.jpg", "c12/4.jpg"]
   },
   {
     id: "casual-13",
@@ -115,7 +115,7 @@ const casualProducts = [
     price: 400,
     size: "من 75 ك ل 110 ك",
     description: "باور سبلماشين + بطانه زبده",
-    images: ["13/1.jpg", "13/2.jpg", "13/3.jpg", "13/4.jpg", "13/5.jpg"]
+    images: ["c13/1.jpg", "c13/2.jpg", "c13/3.jpg", "c13/4.jpg", "c13/5.jpg"]
   },
   {
     id: "casual-14",
@@ -124,7 +124,7 @@ const casualProducts = [
     price: 670,
     size: "من 65ك لـ95ك",
     description: "رويال كريب سعودي مستورد عالى الجودة ماتريال التوب قطن بيور محمل تركي",
-    images: ["14/1.jpg", "14/2.jpg", "14/3.jpg"]
+    images: ["c14/1.jpg", "c14/2.jpg", "c14/3.jpg"]
   },
   {
     id: "casual-15",
@@ -133,7 +133,7 @@ const casualProducts = [
     price: 350,
     size: "65ك لـ 85ك",
     description: "بيزك دريس سي واي واوبن دريس سي واي مستورد",
-    images: ["15/1.jpg", "15/2.jpg", "15/3.jpg", "15/4.jpg", "15/5.jpg", "15/6.jpg", "15/7.jpg", "15/8.jpg", "15/9.jpg", "15/10.jpg"]
+    images: ["c15/1.jpg", "c15/2.jpg", "c15/3.jpg", "c15/4.jpg", "c15/5.jpg", "c15/6.jpg", "c15/7.jpg", "c15/8.jpg", "c15/9.jpg", "c15/10.jpg"]
   },
   {
     id: "casual-16",
@@ -142,7 +142,7 @@ const casualProducts = [
     price: 300,
     size: "65ك لـ 85ك",
     description: "سوفت مبرد تركى عالى الجودة",
-    images: ["16/1.jpg", "16/2.jpg"]
+    images: ["c16/1.jpg", "c16/2.jpg"]
   },
   {
     id: "casual-17",
@@ -151,7 +151,7 @@ const casualProducts = [
     price: 470,
     size: "من 70الي 90ك",
     description: "ستان ارماني محمل مستورد",
-    images: ["17/1.jpg", "17/2.jpg", "17/3.jpg", "17/4.jpg"]
+    images: ["c17/1.jpg", "c17/2.jpg", "c17/3.jpg", "c17/4.jpg"]
   },
   {
     id: "casual-18",
@@ -160,7 +160,7 @@ const casualProducts = [
     price: 450,
     size: "65ك لـ 85ك",
     description: "سي واي مستورد",
-    images: ["18/1.jpg", "18/2.jpg", "18/3.jpg"]
+    images: ["c18/1.jpg", "c18/2.jpg", "c18/3.jpg"]
   },
   {
     id: "casual-19",
@@ -169,7 +169,7 @@ const casualProducts = [
     price: 400,
     size: "65ك لـ 85ك",
     description: "كتان فرنساوي معالج عالى الجودة",
-    images: ["19/1.jpg", "19/2.jpg", "19/3.jpg", "19/4.jpg", "19/5.jpg", "19/6.jpg", "19/7.jpg"]
+    images: ["c19/1.jpg", "c19/2.jpg", "c19/3.jpg", "c19/4.jpg", "c19/5.jpg", "c19/6.jpg", "c19/7.jpg"]
   },
   {
     id: "casual-20",
@@ -178,7 +178,7 @@ const casualProducts = [
     price: 450,
     size: "من70الي 85ك",
     description: "موچ البحر مستورد",
-    images: ["20/1.jpg", "20/2.jpg", "20/3.jpg", "20/4.jpg", "20/5.jpg", "20/6.jpg"]
+    images: ["c20/1.jpg", "c20/2.jpg", "c20/3.jpg", "c20/4.jpg", "c20/5.jpg", "c20/6.jpg"]
   },
   {
     id: "casual-21",
@@ -187,7 +187,7 @@ const casualProducts = [
     price: 400,
     size: "65ك لـ 85ك",
     description: "كتان فرنساوي معالج مستورد عالى الجودة",
-    images: ["21/1.jpg", "21/2.jpg"]
+    images: ["c21/1.jpg", "c21/2.jpg"]
   },
   {
     id: "casual-22",
@@ -196,7 +196,7 @@ const casualProducts = [
     price: 300,
     size: "من80 ل 85 كيلو",
     description: "فريسكا مستورد عالى الجودة",
-    images: ["22/1.jpg", "22/2.jpg", "22/3.jpg", "22/4.jpg", "22/5.jpg", "22/6.jpg", "22/7.jpg"]
+    images: ["c22/1.jpg", "c22/2.jpg", "c22/3.jpg", "c22/4.jpg", "c22/5.jpg", "c22/6.jpg", "c22/7.jpg"]
   },
   {
     id: "casual-23",
@@ -205,7 +205,7 @@ const casualProducts = [
     price: 650,
     size: "من65ك الي90ك",
     description: "ستان بيور محمل مستورد",
-    images: ["23/1.jpg", "23/2.jpg", "23/3.jpg"]
+    images: ["c23/1.jpg", "c23/2.jpg", "c23/3.jpg"]
   },
   {
     id: "casual-24",
@@ -214,7 +214,7 @@ const casualProducts = [
     price: 400,
     size: "من65ك الي90ك",
     description: "شيفون تركي مطبوع مستورد",
-    images: ["24/1.jpg", "24/2.jpg", "24/3.jpg", "24/4.jpg"]
+    images: ["c24/1.jpg", "c24/2.jpg", "c24/3.jpg", "c24/4.jpg"]
   },
   {
     id: "casual-25",
@@ -223,7 +223,7 @@ const casualProducts = [
     price: 500,
     size: "من 55الي90كيلو",
     description: "چينز رباعيه مغسول مستورد",
-    images: ["25/1.jpg", "25/2.jpg"]
+    images: ["c25/1.jpg", "c25/2.jpg"]
   },
   {
     id: "casual-26",
@@ -232,7 +232,7 @@ const casualProducts = [
     price: 350,
     size: "65ك لـ 85ك",
     description: "سي واي مستورد",
-    images: ["26/1.jpg", "26/2.jpg", "26/3.jpg", "26/4.jpg", "26/5.jpg", "26/6.jpg", "26/7.jpg", "26/8.jpg", "26/9.jpg", "26/10.jpg", "26/11.jpg"]
+    images: ["c26/1.jpg", "c26/2.jpg", "c26/3.jpg", "c26/4.jpg", "c26/5.jpg", "c26/6.jpg", "c26/7.jpg", "c26/8.jpg", "c26/9.jpg", "c26/10.jpg", "c26/11.jpg"]
   },
   {
     id: "casual-27",
@@ -241,7 +241,7 @@ const casualProducts = [
     price: 700,
     size: "من65ك الي90ك",
     description: "--",
-    images: ["27/1.jpg", "27/2.jpg", "27/3.jpg"]
+    images: ["c27/1.jpg", "c27/2.jpg", "c27/3.jpg"]
   },
   {
     id: "casual-28",
@@ -250,7 +250,7 @@ const casualProducts = [
     price: 500,
     size: "من 65ك لـ 85ك",
     description: "فريسكا مطبوع مستورد",
-    images: ["28/1.jpg", "28/2.jpg", "28/3.jpg"]
+    images: ["c28/1.jpg", "c28/2.jpg", "c28/3.jpg"]
   },
   {
     id: "casual-29",
@@ -259,7 +259,7 @@ const casualProducts = [
     price: 250,
     size: "من 80ك لـ 85ك",
     description: "رويال مطبوع عالى الجودة",
-    images: ["29/1.jpg", "29/2.jpg"]
+    images: ["c29/1.jpg", "c29/2.jpg"]
   },
   {
     id: "casual-30",
@@ -268,7 +268,7 @@ const casualProducts = [
     price: 400,
     size: "من 65ك لـ 85ك",
     description: "كتان فرنساوي معالج ضدد الانكماش مستورد عالي الجودة",
-    images: ["30/1.jpg"]
+    images: ["c30/1.jpg"]
   },
   {
     id: "casual-31",
@@ -277,7 +277,7 @@ const casualProducts = [
     price: 300,
     size: "من 65ك لـ 85ك",
     description: "رويال في جينز",
-    images: ["31/1.jpg"]
+    images: ["c31/1.jpg"]
   },
   {
     id: "casual-32",
@@ -286,7 +286,7 @@ const casualProducts = [
     price: 300,
     size: "من 65ك لـ90ك",
     description: "ميلتون قطن بيور مستورد.",
-    images: ["32/1.jpg", "32/2.jpg", "32/3.jpg", "32/4.jpg", "32/5.jpg", "32/6.jpg"]
+    images: ["c32/1.jpg", "c32/2.jpg", "c32/3.jpg", "c32/4.jpg", "c32/5.jpg", "c32/6.jpg"]
   },
   {
     id: "casual-33",
@@ -295,7 +295,7 @@ const casualProducts = [
     price: 300,
     size: "من70الى85كيلو",
     description: "شيفون تركى عالى الجودة مبطن روزته",
-    images: ["33/1.jpg"]
+    images: ["c33/1.jpg"]
   },
   {
     id: "casual-34",
@@ -304,7 +304,7 @@ const casualProducts = [
     price: 330,
     size: "من 75الي 85ك",
     description: "رويال ناعم مستورد عالى الجودة",
-    images: ["34/1.jpg", "34/2.jpg", "34/3.jpg", "34/4.jpg", "34/5.jpg", "34/6.jpg", "34/7.jpg", "34/8.jpg", "34/9.jpg"]
+    images: ["c34/1.jpg", "c34/2.jpg", "c34/3.jpg", "c34/4.jpg", "c34/5.jpg", "c34/6.jpg", "c34/7.jpg", "c34/8.jpg", "c34/9.jpg"]
   },
   {
     id: "casual-35",
@@ -313,6 +313,6 @@ const casualProducts = [
     price: 350,
     size: "من 65ك الي90ك",
     description: "سوفت مطبوع مستورد تركي عالي الجود",
-    images: ["35/1.jpg", "35/2.jpg", "35/3.jpg"]
+    images: ["c35/1.jpg", "c35/2.jpg", "c35/3.jpg"]
   }
 ];

@@ -905,3 +905,21 @@ body.lang-en .wish-btn {
     visibility: visible;
     transform: translateX(-50%) translateY(0);
 }
+/* ===== المقاس والوصف في صفحة تفاصيل المنتج ===== */
+.product-size {
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.product-size strong {
+    color: var(--secondary);
+}
+
+.product-desc {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    white-space: pre-line;
+}

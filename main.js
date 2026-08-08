@@ -269,7 +269,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.appendChild(checkoutOverlay);
         document.body.appendChild(checkoutPanel);
 
-        checkoutOverlay.addEventListener("click", hideCheckout);
+        checkoutOverlay.addEventListener("click", () => {
+            if (orderSent) destroyCheckout(); else hideCheckout();
+        });
         checkoutPanel.querySelector("#closeCheckout").addEventListener("click", hideCheckout);
 
         const govSelect = checkoutPanel.querySelector("#checkoutGov");
@@ -320,6 +322,8 @@ document.addEventListener("DOMContentLoaded", () => {
         checkoutOverlay.classList.remove("active");
     }
 
+    let orderSent = false;
+
     function submitOrder() {
         const name = checkoutPanel.querySelector("#checkoutName").value.trim();
         const phone = checkoutPanel.querySelector("#checkoutPhone").value.trim();
@@ -347,9 +351,45 @@ document.addEventListener("DOMContentLoaded", () => {
         msg += `\nالإجمالي: ${subtotal} ج.م`;
         msg += `\nالشحن: ${ship} ج.م`;
         msg += `\nالإجمالي الكلي: ${grandTotal} ج.م`;
+        msg += `\n\nلبسك من LBSK 💕`;
 
         const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
         window.open(waUrl, "_blank");
+
+        // تفريغ السلة بعد إرسال الطلب بنجاح
+        cart = [];
+        saveCart();
+        renderCart();
+        selectedGov = "";
+        localStorage.removeItem("lbsk-gov");
+
+        showCheckoutSuccess();
+    }
+
+    function showCheckoutSuccess() {
+        orderSent = true;
+        checkoutPanel.innerHTML = `
+            <div class="cart-header">
+                <h3>${currentLang === "ar" ? "تم إرسال الطلب" : "Order Sent"}</h3>
+                <button id="closeCheckout" class="close-cart">&times;</button>
+            </div>
+            <div class="checkout-success">
+                <img src="logo/logo.png" alt="LBSK" class="checkout-success-logo">
+                <p class="checkout-success-title">${currentLang === "ar" ? "🎉 تم إرسال طلبك بنجاح!" : "🎉 Your order has been sent!"}</p>
+                <p class="checkout-success-text">${currentLang === "ar" ? "هنتواصل معاكِ قريبًا لتأكيد الطلب وتفاصيل الشحن. شكرًا لثقتك فينا." : "We'll contact you soon to confirm your order and shipping details. Thank you for trusting us."}</p>
+                <p class="checkout-success-tagline">${currentLang === "ar" ? "لبسك من LBSK" : "Yours from LBSK"}</p>
+            </div>
+        `;
+        checkoutPanel.querySelector("#closeCheckout").addEventListener("click", destroyCheckout);
+    }
+
+    function destroyCheckout() {
+        hideCheckout();
+        setTimeout(() => {
+            if (checkoutPanel) { checkoutPanel.remove(); checkoutPanel = null; }
+            if (checkoutOverlay) { checkoutOverlay.remove(); checkoutOverlay = null; }
+            orderSent = false;
+        }, 350);
     }
 
     // زرار "إتمام الطلب" الموجود جوا السلة

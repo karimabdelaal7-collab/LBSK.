@@ -339,19 +339,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const ship = shippingCost();
         const grandTotal = subtotal + ship;
 
-        let msg = `📦 طلب جديد من موقع LBSK\n\n`;
-        msg += `👤 الاسم: ${name}\n`;
-        msg += `📱 الموبايل: ${phone}\n`;
-        msg += `📍 المحافظة: ${gov}\n`;
-        msg += `🏠 العنوان: ${address}\n\n`;
-        msg += `🛍️ المنتجات:\n`;
+        let msg = `طلب جديد من موقع LBSK\n\n`;
+        msg += `الاسم: ${name}\n`;
+        msg += `الموبايل: ${phone}\n`;
+        msg += `المحافظة: ${gov}\n`;
+        msg += `العنوان: ${address}\n\n`;
+        msg += `المنتجات:\n`;
         cart.forEach((item) => {
             msg += `- ${item.nameAr} × ${item.qty} = ${item.price * item.qty} ج.م\n`;
         });
         msg += `\nالإجمالي: ${subtotal} ج.م`;
         msg += `\nالشحن: ${ship} ج.م`;
         msg += `\nالإجمالي الكلي: ${grandTotal} ج.م`;
-        msg += `\n\nلبسك من LBSK 💕`;
+        msg += `\n\nلبسك من LBSK`;
 
         const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
         window.open(waUrl, "_blank");

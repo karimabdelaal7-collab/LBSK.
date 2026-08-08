@@ -922,4 +922,63 @@ body.lang-en .wish-btn {
     line-height: 1.7;
     margin-bottom: 20px;
     white-space: pre-line;
+    /* ===== إضافات CSS لفورم إتمام الطلب — ضيفهم في آخر style.css ===== */
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+}
+
+.checkout-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.checkout-form input,
+.checkout-form select,
+.checkout-form textarea {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    background: #fff;
+}
+
+.checkout-form input:focus,
+.checkout-form select:focus,
+.checkout-form textarea:focus {
+    border-color: #000;
+}
+
+.checkout-form textarea {
+    resize: vertical;
+}
+
+.checkout-ship-line {
+    font-size: 13px;
+    color: #555;
+    margin: 0;
+}
+
+.cart-total-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 2px 0;
+}
+
+.cart-total-grand {
+    font-weight: 700;
+    font-size: 16px;
+    border-top: 1px solid #eee;
+    margin-top: 6px;
+    padding-top: 8px;
+}
 }

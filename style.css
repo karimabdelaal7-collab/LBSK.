@@ -922,8 +922,9 @@ body.lang-en .wish-btn {
     line-height: 1.7;
     margin-bottom: 20px;
     white-space: pre-line;
-    /* ===== إضافات CSS لفورم إتمام الطلب — ضيفهم في آخر style.css ===== */
+}
 
+/* ===== فورم إتمام الطلب (بيانات الشحن) ===== */
 .checkout-form {
     display: flex;
     flex-direction: column;
@@ -981,4 +982,38 @@ body.lang-en .wish-btn {
     margin-top: 6px;
     padding-top: 8px;
 }
+
+/* ===== شاشة تأكيد إرسال الطلب ===== */
+.checkout-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 50px 24px;
+    gap: 12px;
+}
+
+.checkout-success-logo {
+    width: 64px;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+.checkout-success-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.checkout-success-text {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+.checkout-success-tagline {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-top: 10px;
 }

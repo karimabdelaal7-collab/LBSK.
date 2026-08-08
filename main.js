@@ -1,7 +1,42 @@
-// ===== main.js: اللغة + السلة + المفضلة (يعمل في كل صفحات الموقع) =====
+// ===== main.js: اللغة + السلة + المفضلة + إتمام الطلب (يعمل في كل صفحات الموقع) =====
 
 document.addEventListener("DOMContentLoaded", () => {
     let currentLang = "ar";
+
+    // ===== رقم الواتساب اللي هتوصله الطلبات =====
+    const WHATSAPP_NUMBER = "201080747995";
+
+    // ===== أسعار الشحن للمحافظات =====
+    // لو عايز تغيّر سعر أو تضيف/تعدل محافظة، عدّل هنا بس
+    const GOV_SHIPPING = {
+        "القاهرة": 60,
+        "الجيزة": 60,
+        "الإسكندرية": 75,
+        "الدقهلية": 85,
+        "الشرقية": 85,
+        "المنوفية": 85,
+        "الغربية": 85,
+        "القليوبية": 85,
+        "كفر الشيخ": 85,
+        "دمياط": 85,
+        "البحيرة": 85,
+        "بورسعيد": 85,
+        "الإسماعيلية": 85,
+        "السويس": 85,
+        "بني سويف": 95,
+        "الفيوم": 95,
+        "المنيا": 95,
+        "أسيوط": 95,
+        "سوهاج": 95,
+        "قنا": 95,
+        "أسوان": 120,
+        "الأقصر": 120,
+        "البحر الأحمر": 120,
+        "مطروح": 120,
+        "شمال سيناء": 120,
+        "جنوب سيناء": 120,
+        "الوادي الجديد": 120
+    };
 
     function showToast(message) {
         let toast = document.getElementById("lbskToast");
@@ -32,9 +67,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartTotalEl = document.getElementById("cartTotal");
 
     let cart = JSON.parse(localStorage.getItem("lbsk-cart") || "[]");
+    let selectedGov = localStorage.getItem("lbsk-gov") || "";
 
     function saveCart() {
         localStorage.setItem("lbsk-cart", JSON.stringify(cart));
+    }
+
+    function cartSubtotal() {
+        return cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+    }
+
+    function shippingCost() {
+        return GOV_SHIPPING[selectedGov] || 0;
     }
 
     function openCart() {
@@ -80,8 +124,19 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .join("");
 
-        const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
-        cartTotalEl.innerHTML = `${total} <span>${currentLang === "ar" ? "ج.م" : "EGP"}</span>`;
+        const subtotal = cartSubtotal();
+        const ship = shippingCost();
+        const grandTotal = subtotal + ship;
+
+        if (ship > 0) {
+            cartTotalEl.innerHTML = `
+                <div class="cart-total-line"><span>${currentLang === "ar" ? "الإجمالي" : "Subtotal"}</span><span>${subtotal} ${currentLang === "ar" ? "ج.م" : "EGP"}</span></div>
+                <div class="cart-total-line"><span>${currentLang === "ar" ? "الشحن" : "Shipping"}</span><span>${ship} ${currentLang === "ar" ? "ج.م" : "EGP"}</span></div>
+                <div class="cart-total-line cart-total-grand"><span>${currentLang === "ar" ? "الإجمالي الكلي" : "Total"}</span><span>${grandTotal} ${currentLang === "ar" ? "ج.م" : "EGP"}</span></div>
+            `;
+        } else {
+            cartTotalEl.innerHTML = `${subtotal} <span>${currentLang === "ar" ? "ج.م" : "EGP"}</span>`;
+        }
     }
 
     function changeQty(id, delta) {
@@ -141,22 +196,173 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderWishIcons() {
-  if (wishCountEl) wishCountEl.textContent = wishlist.length;
-  document.querySelectorAll(".wish-btn").forEach((btn) => {
-    const active = isWished(btn.dataset.id);
-    btn.classList.toggle("active", active);
-    btn.textContent = active ? "♥" : "♡";
-  });
-  if (typeof window.renderWishlistPage === "function") {
-    window.renderWishlistPage();
-  }
-}
+        if (wishCountEl) wishCountEl.textContent = wishlist.length;
+        document.querySelectorAll(".wish-btn").forEach((btn) => {
+            const active = isWished(btn.dataset.id);
+            btn.classList.toggle("active", active);
+            btn.textContent = active ? "♥" : "♡";
+        });
+        if (typeof window.renderWishlistPage === "function") {
+            window.renderWishlistPage();
+        }
+    }
 
     if (wishBtn) {
         wishBtn.addEventListener("click", () => {
             window.location.href = "wishlist.html";
         });
     }
+
+    // ============================================================
+    // ===== فورم إتمام الطلب (بيانات الشحن + رسالة واتساب) =====
+    // ============================================================
+
+    let checkoutOverlay, checkoutPanel;
+
+    function buildCheckoutPanel() {
+        if (checkoutPanel) return;
+
+        checkoutOverlay = document.createElement("div");
+        checkoutOverlay.className = "cart-overlay";
+        checkoutOverlay.id = "checkoutOverlay";
+
+        checkoutPanel = document.createElement("aside");
+        checkoutPanel.className = "cart-panel";
+        checkoutPanel.id = "checkoutPanel";
+
+        const govOptions = Object.keys(GOV_SHIPPING)
+            .map((gov) => `<option value="${gov}">${gov} — ${GOV_SHIPPING[gov]} ${currentLang === "ar" ? "ج.م" : "EGP"}</option>`)
+            .join("");
+
+        checkoutPanel.innerHTML = `
+            <div class="cart-header">
+                <h3>${currentLang === "ar" ? "بيانات الشحن" : "Shipping Details"}</h3>
+                <button id="closeCheckout" class="close-cart">&times;</button>
+            </div>
+            <div class="cart-items checkout-form">
+                <label>${currentLang === "ar" ? "الاسم بالكامل" : "Full Name"}
+                    <input type="text" id="checkoutName" required>
+                </label>
+                <label>${currentLang === "ar" ? "رقم الموبايل" : "Phone Number"}
+                    <input type="tel" id="checkoutPhone" required placeholder="01xxxxxxxxx">
+                </label>
+                <label>${currentLang === "ar" ? "المحافظة" : "Governorate"}
+                    <select id="checkoutGov" required>
+                        <option value="" disabled selected>${currentLang === "ar" ? "اختاري المحافظة" : "Select Governorate"}</option>
+                        ${govOptions}
+                    </select>
+                </label>
+                <label>${currentLang === "ar" ? "العنوان بالتفصيل" : "Detailed Address"}
+                    <textarea id="checkoutAddress" required rows="3"></textarea>
+                </label>
+                <p id="checkoutShipLine" class="checkout-ship-line"></p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>${currentLang === "ar" ? "الإجمالي الكلي" : "Grand Total"}</span>
+                    <span id="checkoutGrandTotal">0 ${currentLang === "ar" ? "ج.م" : "EGP"}</span>
+                </div>
+                <button id="sendWhatsappOrder" class="btn cart-checkout">${currentLang === "ar" ? "إرسال الطلب عبر واتساب" : "Send Order via WhatsApp"}</button>
+            </div>
+        `;
+
+        document.body.appendChild(checkoutOverlay);
+        document.body.appendChild(checkoutPanel);
+
+        checkoutOverlay.addEventListener("click", hideCheckout);
+        checkoutPanel.querySelector("#closeCheckout").addEventListener("click", hideCheckout);
+
+        const govSelect = checkoutPanel.querySelector("#checkoutGov");
+        govSelect.value = selectedGov || "";
+        govSelect.addEventListener("change", () => {
+            selectedGov = govSelect.value;
+            localStorage.setItem("lbsk-gov", selectedGov);
+            updateCheckoutTotals();
+            renderCart();
+        });
+
+        checkoutPanel.querySelector("#sendWhatsappOrder").addEventListener("click", submitOrder);
+
+        updateCheckoutTotals();
+    }
+
+    function updateCheckoutTotals() {
+        if (!checkoutPanel) return;
+        const subtotal = cartSubtotal();
+        const ship = shippingCost();
+        const grandTotal = subtotal + ship;
+
+        const shipLine = checkoutPanel.querySelector("#checkoutShipLine");
+        if (selectedGov) {
+            shipLine.textContent = (currentLang === "ar" ? "سعر الشحن لـ " : "Shipping to ") + selectedGov + ": " + ship + " " + (currentLang === "ar" ? "ج.م" : "EGP");
+        } else {
+            shipLine.textContent = "";
+        }
+
+        checkoutPanel.querySelector("#checkoutGrandTotal").textContent = grandTotal + " " + (currentLang === "ar" ? "ج.م" : "EGP");
+    }
+
+    function openCheckout() {
+        if (cart.length === 0) {
+            showToast(currentLang === "ar" ? "السلة فارغة" : "Your cart is empty");
+            return;
+        }
+        buildCheckoutPanel();
+        updateCheckoutTotals();
+        hideCart();
+        checkoutPanel.classList.add("active");
+        checkoutOverlay.classList.add("active");
+    }
+
+    function hideCheckout() {
+        if (!checkoutPanel) return;
+        checkoutPanel.classList.remove("active");
+        checkoutOverlay.classList.remove("active");
+    }
+
+    function submitOrder() {
+        const name = checkoutPanel.querySelector("#checkoutName").value.trim();
+        const phone = checkoutPanel.querySelector("#checkoutPhone").value.trim();
+        const gov = checkoutPanel.querySelector("#checkoutGov").value;
+        const address = checkoutPanel.querySelector("#checkoutAddress").value.trim();
+
+        if (!name || !phone || !gov || !address) {
+            showToast(currentLang === "ar" ? "من فضلك املأي كل البيانات" : "Please fill in all fields");
+            return;
+        }
+
+        const subtotal = cartSubtotal();
+        const ship = shippingCost();
+        const grandTotal = subtotal + ship;
+
+        let msg = `📦 طلب جديد من موقع LBSK\n\n`;
+        msg += `👤 الاسم: ${name}\n`;
+        msg += `📱 الموبايل: ${phone}\n`;
+        msg += `📍 المحافظة: ${gov}\n`;
+        msg += `🏠 العنوان: ${address}\n\n`;
+        msg += `🛍️ المنتجات:\n`;
+        cart.forEach((item) => {
+            msg += `- ${item.nameAr} × ${item.qty} = ${item.price * item.qty} ج.م\n`;
+        });
+        msg += `\nالإجمالي: ${subtotal} ج.م`;
+        msg += `\nالشحن: ${ship} ج.م`;
+        msg += `\nالإجمالي الكلي: ${grandTotal} ج.م`;
+
+        const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+        window.open(waUrl, "_blank");
+    }
+
+    // زرار "إتمام الطلب" الموجود جوا السلة
+    document.addEventListener("click", (e) => {
+        const checkoutBtn = e.target.closest(".cart-checkout");
+        if (checkoutBtn && checkoutBtn.id !== "sendWhatsappOrder") {
+            e.preventDefault();
+            openCheckout();
+            return;
+        }
+    });
+
+    // ============================================================
 
     document.addEventListener("click", (e) => {
         const cartActionBtn = e.target.closest("[data-cart-action]");
@@ -239,6 +445,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         renderCart();
+        if (checkoutPanel) {
+            checkoutPanel.remove();
+            checkoutOverlay.remove();
+            checkoutPanel = null;
+            checkoutOverlay = null;
+        }
         if (typeof window.renderWishlistPage === "function") {
             window.renderWishlistPage();
         }

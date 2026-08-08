@@ -1,1019 +1,137 @@
-html {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-:root{
-    --primary:#D88AA6;
-    --primary-dark:#C97493;
-    --secondary:#C58A6C;
-    --background:#FDF5F8;
-    --white:#FFFFFF;
-    --text:#2D2D2D;
-    --gray:#777777;
-}
-body {
-    font-family: 'Cairo', sans-serif;
-    direction: rtl;
-background: var(--background);}
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background-color: white;
-    border-bottom: 1px solid #ddd;
-}
-
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-}
-
-nav {
-    display: flex;
-    gap: 25px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: #d16b86;
-}
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-  min-height: 35vh;
-  padding: 25px 8%;
-  background: #FAF6F1;
-}
-
-.hero-text {
-    width: 50%;
-}
-
-.hero-text h1 {
-    font-size: 60px;
-    color: #222;
-    margin-bottom: 20px;
-}
-
-.hero-text p {
-    font-size: 22px;
-    color: #666;
-    margin-bottom: 35px;
-}
-
-.hero-categories {
-    font-size: 20px;
-    color: var(--secondary);
-    font-weight: 600;
-    margin-bottom: 15px;
-    letter-spacing: 0.5px;
-}
-
-.hero-tagline {
-    font-size: 18px;
-    color: #b0b0b0;
-    margin-bottom: 30px;
-}
-
-.btn {
-    display: inline-block;
-background:var(--primary);
-    color: #fff;
-    text-decoration: none;
-    padding: 15px 35px;
-    border-radius: 50px;
-    font-size: 18px;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: #c45a76;
-}
-
-.hero-image {
-    width: 30%;
-    display: flex;
-    justify-content: center;
-}
-
-.hero-image img {
-    width: 100%;
-    max-width: 280px;
-}
-.logo img{
-    width: 170px;
-    height: auto;
-    display: block;
-}
-
-.header-icons{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.header-icons button{
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 18px;
-}
-.header-actions{
-    display: flex;
-    align-items: center;
-    gap: 22px;
-}
-
-.lang-btn{
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-family: 'Cairo', sans-serif;
-    font-weight: 600;
-    transition: .3s;
-}
-
-.lang-btn:hover{
-    background: var(--primary-dark);
-}
-
-/* ===== Products Section ===== */
-.products {
-    padding: 60px 8%;
-    text-align: center;
-}
-
-.products h2 {
-    font-size: 32px;
-    color: var(--text);
-    margin-bottom: 40px;
-}
-
-.products-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-}
-
-.product-card {
-    position: relative;
-    background: var(--white);
-    border-radius: 16px;
-    padding: 20px;
-    width: 260px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-    transition: 0.3s;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.product-image {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    border-radius: 12px;
-    background: #f7f6f4;
-    margin-bottom: 15px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px;
-    box-sizing: border-box;
-}
-
-.product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-.product-image-link {
-    display: block;
-    text-decoration: none;
-}
-
-/* ===== Page title (category pages) ===== */
-.page-title {
-    text-align: center;
-    padding: 50px 8% 10px;
-}
-
-.page-title h1 {
-    font-size: 34px;
-    color: var(--text);
-    margin-bottom: 8px;
-}
-
-.page-title p {
-    color: #999;
-    font-size: 16px;
-}
-
-nav a.active {
-    color: var(--primary-dark);
-    font-weight: 700;
-}
-
-/* ===== Product Detail Page ===== */
-.product-detail {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    padding: 50px 8%;
-    align-items: flex-start;
-}
-
-.product-gallery {
-    flex: 1;
-    min-width: 300px;
-    max-width: 520px;
-}
-
-.main-image {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #f7f6f4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    box-sizing: border-box;
-}
-
-.main-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-.gallery-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.85);
-    border: none;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 16px;
-    color: var(--text);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.gallery-arrow.prev { right: 12px; }
-.gallery-arrow.next { left: 12px; }
-
-.thumbnails {
-    display: flex;
-    gap: 10px;
-    margin-top: 12px;
-    overflow-x: auto;
-    padding-bottom: 5px;
-}
-
-.thumb {
-    width: 65px;
-    height: 65px;
-    object-fit: cover;
-    border-radius: 8px;
-    cursor: pointer;
-    opacity: 0.6;
-    border: 2px solid transparent;
-    flex-shrink: 0;
-    transition: 0.2s;
-}
-
-.thumb.active,
-.thumb:hover {
-    opacity: 1;
-    border-color: var(--primary);
-}
-
-.product-info {
-    flex: 1;
-    min-width: 280px;
-}
-
-.product-info h1 {
-    font-size: 28px;
-    color: var(--text);
-    margin-bottom: 15px;
-}
-
-.product-info .price {
-    font-size: 24px;
-    color: var(--secondary);
-    font-weight: 700;
-    margin-bottom: 25px;
-}
-
-.product-info .btn {
-    display: inline-block;
-    margin-bottom: 20px;
-}
-
-.back-link {
-    display: block;
-    color: var(--gray);
-    text-decoration: none;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-.back-link:hover {
-    color: var(--primary-dark);
-}
-
-.not-found {
-    padding: 80px 8%;
-    text-align: center;
-    font-size: 20px;
-    color: var(--gray);
-}
-
-.product-card h3 {
-    font-size: 18px;
-    color: var(--text);
-    margin-bottom: 8px;
-}
-
-.product-card .price {
-    color: var(--secondary);
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.btn-small {
-    display: inline-block;
-    background: var(--primary);
-    color: #fff;
-    text-decoration: none;
-    padding: 8px 20px;
-    border-radius: 30px;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.btn-small:hover {
-    background: var(--primary-dark);
-}
-
-/* ===== Footer ===== */
-footer {
-    text-align: center;
-    padding: 25px;
-    background: var(--white);
-    border-top: 1px solid #ddd;
-    color: var(--gray);
-    font-size: 14px;
-}
-
-/* ===== Cart icon badge ===== */
-.header-icons button {
-    position: relative;
-}
-
-.cart-count {
-    position: absolute;
-    top: -6px;
-    left: -10px;
-    background: var(--primary-dark);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    min-width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 3px;
-}
-
-/* ===== Cart panel ===== */
-.cart-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    z-index: 100;
-}
-
-.cart-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.cart-panel {
-    position: fixed;
-    top: 0;
-    right: -380px;
-    width: 350px;
-    max-width: 90vw;
-    height: 100%;
-    background: var(--white);
-    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
-    transition: 0.35s ease;
-    z-index: 101;
-    display: flex;
-    flex-direction: column;
-}
-
-.cart-panel.active {
-    right: 0;
-}
-
-body.lang-en .cart-panel {
-    right: auto;
-    left: -380px;
-}
-
-body.lang-en .cart-panel.active {
-    left: 0;
-}
-
-.cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid #eee;
-}
-
-.close-cart {
-    background: none;
-    border: none;
-    font-size: 26px;
-    cursor: pointer;
-    color: var(--gray);
-    line-height: 1;
-}
-
-.cart-items {
-    flex: 1;
-    overflow-y: auto;
-    padding: 15px 20px;
-}
-
-.cart-empty {
-    color: var(--gray);
-    text-align: center;
-    margin-top: 30px;
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid #f1f1f1;
-}
-
-.cart-item-thumb {
-    width: 55px;
-    height: 55px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    flex-shrink: 0;
-}
-
-.cart-item-info {
-    flex: 1;
-}
-
-.cart-item-info h4 {
-    font-size: 14px;
-    color: var(--text);
-    margin-bottom: 4px;
-}
-
-.cart-item-price {
-    font-size: 13px;
-    color: var(--secondary);
-}
-
-.cart-item-qty {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 6px;
-}
-
-.qty-btn {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    border: 1px solid #ddd;
-    background: var(--white);
-    cursor: pointer;
-    font-size: 14px;
-    line-height: 1;
-}
-
-.cart-item-remove {
-    background: none;
-    border: none;
-    color: #bbb;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.cart-item-remove:hover {
-    color: #d9534f;
-}
-
-.cart-footer {
-    padding: 20px;
-    border-top: 1px solid #eee;
-}
-
-.cart-total {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: var(--text);
-}
-
-.cart-checkout {
-    display: block;
-    width: 100%;
-    text-align: center;
-    box-sizing: border-box;
-}
-
-/* ===== English mode ===== */
-body.lang-en {
-    direction: ltr;
-}
-
-body.lang-en .hero-text,
-body.lang-en .products,
-body.lang-en footer {
-    text-align: left;
-}
-
-body.lang-en .products {
-    text-align: center;
-}
-/* ======================================
-   تنسيقات خاصة بالموبايل والشاشات الصغيرة
-   ====================================== */
-@media (max-width: 768px) {
-
-    html, body {
-        overflow-x: hidden;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    header {
-        flex-wrap: wrap;
-        padding: 12px 5%;
-        row-gap: 10px;
-    }
-
-    .logo img {
-  width: auto;
-  height: 65px;
-  max-width: 160px;
-  object-fit: contain;
-}
-
-    nav {
-        order: 3;
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px 16px;
-        font-size: 14px;
-    }
-
-    .header-actions {
-        gap: 12px;
-    }
-
-    .hero {
-        flex-direction: column;
-        text-align: center;
-        padding: 30px 6%;
-        width: 100%;
-    }
-
-    .hero-text {
-        width: 100%;
-    }
-
-    .hero-text h1 {
-        font-size: 26px;
-        word-wrap: break-word;
-    }
-
-    .hero-categories {
-        font-size: 16px;
-    }
-
-    .hero-tagline {
-        font-size: 15px;
-    }
-
-    .hero-image {
-        width: 100%;
-        max-width: 220px;
-        margin: 20px auto 0;
-    }
-
-    .products {
-        padding: 30px 5%;
-    }
-
-    .page-title h1 {
-        font-size: 26px;
-    }
-
-    .products-grid {
-        justify-content: space-between;
-        gap: 16px;
-    }
-
-    .product-card {
-        width: calc(50% - 8px);
-        padding: 10px;
-    }
-
-    .product-card h3 {
-        font-size: 14px;
-    }
-
-    .btn-small {
-        font-size: 12px;
-        padding: 7px 14px;
-        width: 100%;
-        text-align: center;
-        box-sizing: border-box;
-    }
-
-    /* صفحة تفاصيل المنتج */
-    .product-detail {
-        flex-direction: column;
-        padding: 25px 6%;
-        gap: 25px;
-        width: 100%;
-    }
-
-    .product-gallery {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-    }
-
-    .product-info {
-        width: 100%;
-        min-width: 0;
-    }
-
-    .product-info h1 {
-        font-size: 22px;
-    }
-
-    /* السلة على كامل الشاشة في الموبايل */
-    .cart-panel {
-        width: 100%;
-        max-width: 100%;
-        right: -100%;
-    }
-
-    body.lang-en .cart-panel {
-        left: -100%;
-    }
-}
-
-@media (max-width: 420px) {
-    .product-card {
-        width: 100%;
-    }
-}
-
-/* ===== Footer Social Icons ===== */
-.footer-social {
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    margin-bottom: 16px;
-}
-
-.social-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: var(--primary);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.25s;
-}
-
-.social-icon svg {
-    width: 18px;
-    height: 18px;
-}
-
-.social-icon:hover {
-    background: var(--primary-dark);
-    transform: translateY(-3px);
-}
-
-/* ===== Coming Soon Page ===== */
-.soon-section {
-    text-align: center;
-    padding: 60px 8% 80px;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.soon-cover {
-    width: 100%;
-    max-width: 320px;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    border-radius: 16px;
-    margin-bottom: 30px;
-    background: #f7f6f4;
-}
-
-.soon-section h1 {
-    font-size: 28px;
-    color: var(--text);
-    margin-bottom: 12px;
-}
-
-.soon-section p {
-    color: var(--gray);
-    font-size: 16px;
-    margin-bottom: 25px;
-    line-height: 1.6;
-}
-
-/* ===== زرار القلب (المفضلة) ===== */
-.wish-btn {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    cursor: pointer;
-    font-size: 17px;
-    color: var(--gray);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-    z-index: 2;
-    transition: 0.2s;
-}
-
-body.lang-en .wish-btn {
-    left: auto;
-    right: 30px;
-}
-
-.wish-btn:hover {
-    transform: scale(1.1);
-}
-
-.wish-btn.active {
-    color: #e0527a;
-}
-
-/* زرار القلب في صفحة تفاصيل المنتج (مش عايم فوق صورة) */
-.product-actions {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 20px;
-}
-
-.product-actions .btn {
-    margin-bottom: 0;
-}
-
-.wish-btn-detail {
-    position: static;
-    width: 46px;
-    height: 46px;
-    background: #f7f6f4;
-    box-shadow: none;
-    font-size: 20px;
-}
-
-/* ===== أيقونة المفضلة في الهيدر ===== */
-#wishBtn {
-    position: relative;
-}
-
-#wishBtn.active-page {
-    color: var(--primary-dark);
-}
-
-/* ===== زرار المشاركة ===== */
-.share-btn {
-    position: static;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    background: #f7f6f4;
-    border: none;
-    cursor: pointer;
-    font-size: 19px;
-    color: var(--gray);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.2s;
-}
-
-.share-btn:hover {
-    background: var(--primary);
-    color: #fff;
-}
-
-/* ===== رسالة تأكيد صغيرة (Toast) ===== */
-.lbsk-toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: rgba(45, 45, 45, 0.92);
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-size: 14px;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    z-index: 200;
-    white-space: nowrap;
-}
-
-.lbsk-toast.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-}
-/* ===== المقاس والوصف في صفحة تفاصيل المنتج ===== */
-.product-size {
-    font-size: 15px;
-    color: var(--text);
-    margin-bottom: 12px;
-}
-
-.product-size strong {
-    color: var(--secondary);
-}
-
-.product-desc {
-    font-size: 15px;
-    color: var(--gray);
-    line-height: 1.7;
-    margin-bottom: 20px;
-    white-space: pre-line;
-}
-
-/* ===== فورم إتمام الطلب (بيانات الشحن) ===== */
-.checkout-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 16px;
-}
-
-.checkout-form label {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.checkout-form input,
-.checkout-form select,
-.checkout-form textarea {
-    padding: 10px 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 14px;
-    outline: none;
-    background: #fff;
-}
-
-.checkout-form input:focus,
-.checkout-form select:focus,
-.checkout-form textarea:focus {
-    border-color: #000;
-}
-
-.checkout-form textarea {
-    resize: vertical;
-}
-
-.checkout-ship-line {
-    font-size: 13px;
-    color: #555;
-    margin: 0;
-}
-
-.cart-total-line {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    padding: 2px 0;
-}
-
-.cart-total-grand {
-    font-weight: 700;
-    font-size: 16px;
-    border-top: 1px solid #eee;
-    margin-top: 6px;
-    padding-top: 8px;
-}
-
-/* ===== شاشة تأكيد إرسال الطلب ===== */
-.checkout-success {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 50px 24px;
-    gap: 12px;
-}
-
-.checkout-success-logo {
-    width: 64px;
-    height: auto;
-    margin-bottom: 8px;
-}
-
-.checkout-success-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-}
-
-.checkout-success-text {
-    font-size: 14px;
-    color: var(--gray);
-    line-height: 1.6;
-}
-
-.checkout-success-tagline {
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--primary-dark);
-    margin-top: 10px;
-}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LBSK</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo/logo.png" alt="LBSK Logo">
+        </div>
+
+        <nav>
+            <a href="#" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+            <a href="home.html" data-ar="بيتي" data-en="Homewear">بيتي</a>
+            <a href="casual.html" data-ar="كاجوال" data-en="Casual">كاجوال</a>
+            <a href="lingerie.html" data-ar="لانجري" data-en="Lingerie">لانجري</a>
+            <a href="#" data-ar="العروض" data-en="Offers">العروض</a>
+            <a href="#" data-ar="من نحن" data-en="About Us">من نحن</a>
+            <a href="#" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a>
+        </nav>
+
+        <div class="header-actions">
+            <div class="header-icons">
+                <button aria-label="بحث" data-ar-label="بحث" data-en-label="Search">🔍</button>
+                <button id="wishBtn" aria-label="المفضلة" data-ar-label="المفضلة" data-en-label="Wishlist">
+                    ♡ <span id="wishCount" class="cart-count">0</span>
+                </button>
+                <button id="cartBtn" aria-label="سلة التسوق" data-ar-label="سلة التسوق" data-en-label="Cart">
+                    🛒 <span id="cartCount" class="cart-count">0</span>
+                </button>
+            </div>
+            <button id="langToggle" class="lang-btn" data-ar="EN" data-en="AR">EN</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1 data-ar="لبسك من LBSK" data-en="Your Style From LBSK">لبسك من LBSK</h1>
+            <p class="hero-categories" data-ar="بيتي • كاجوال • لانجري" data-en="Homewear • Casual • Lingerie">بيتي • كاجوال • لانجري</p>
+            <p class="hero-tagline" data-ar="افتحي دولابك و اختاري براحتك" data-en="Open your closet and choose with ease">افتحي دولابك و اختاري براحتك</p>
+            <a href="home.html" class="btn" data-ar="تسوقي الآن" data-en="Shop Now">تسوقي الآن</a>
+        </div>
+        <div class="hero-image">
+            <img src="logo/logo.png" alt="LBSK">
+        </div>
+    </section>
+
+    <section class="products">
+        <h2 data-ar="تسوقي حسب القسم" data-en="Shop by Category">تسوقي حسب القسم</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <a href="home.html" class="product-image-link">
+                    <div class="product-image">
+                        <img src="home-cover.jpg" alt="بيتي">
+                    </div>
+                </a>
+                <h3 data-ar="بيتي" data-en="Homewear">بيتي</h3>
+                <a href="home.html" class="btn-small" data-ar="تسوقي القسم" data-en="Shop Category">تسوقي القسم</a>
+            </div>
+            <div class="product-card">
+                <a href="casual.html" class="product-image-link">
+                    <div class="product-image">
+                        <img src="casual-cover.jpg" alt="كاجوال">
+                    </div>
+                </a>
+                <h3 data-ar="كاجوال" data-en="Casual">كاجوال</h3>
+                <a href="casual.html" class="btn-small" data-ar="تسوقي القسم" data-en="Shop Category">تسوقي القسم</a>
+            </div>
+            <div class="product-card">
+                <a href="lingerie.html" class="product-image-link">
+                    <div class="product-image">
+                        <img src="lingerie-cover.jpg" alt="لانجري">
+                    </div>
+                </a>
+                <h3 data-ar="لانجري" data-en="Lingerie">لانجري</h3>
+                <a href="lingerie.html" class="btn-small" data-ar="تسوقي القسم" data-en="Shop Category">تسوقي القسم</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="cartOverlay" class="cart-overlay"></div>
+    <aside id="cartPanel" class="cart-panel">
+        <div class="cart-header">
+            <h3 data-ar="سلة التسوق" data-en="Your Cart">سلة التسوق</h3>
+            <button id="closeCart" class="close-cart">&times;</button>
+        </div>
+        <div id="cartItems" class="cart-items">
+            <p class="cart-empty" data-ar="السلة فارغة" data-en="Your cart is empty">السلة فارغة</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span data-ar="الإجمالي" data-en="Total">الإجمالي</span>
+                <span id="cartTotal">0 <span data-ar="ج.م" data-en="EGP">ج.م</span></span>
+            </div>
+            <a href="#" class="btn cart-checkout" data-ar="إتمام الطلب" data-en="Checkout">إتمام الطلب</a>
+        </div>
+    </aside>
+
+    <footer>
+        <div class="footer-social">
+            <a href="https://www.facebook.com/share/18xCmk6Ujb/" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/lbsk.eg?igsh=bmkwaXdveTJoZzZm" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://wa.me/message/K5X6AYVYEHSWN1" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.3-1.39a9.9 9.9 0 0 0 4.69 1.19h.01c5.46 0 9.9-4.45 9.9-9.9C21.96 6.45 17.5 2 12.04 2zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.55-1.17-2.96 0-1.4.74-2.09 1-2.38.26-.28.58-.35.77-.35s.38 0 .55.01c.18.01.41-.07.64.49.24.58.81 2 .88 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.52.72 1.78.85.26.14.44.2.5.31.06.12.06.68-.18 1.36z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@lbsk75?_r=1&_t=ZS-98K8WUINO8P" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.93-.85-1.5-2.07-1.5-3.42h-3.1v13.4c0 1.47-1.19 2.66-2.66 2.66-1.47 0-2.66-1.19-2.66-2.66 0-1.47 1.19-2.66 2.66-2.66.28 0 .55.05.8.13V9.99a5.7 5.7 0 0 0-.8-.06 5.76 5.76 0 1 0 5.76 5.76V9.4a8.75 8.75 0 0 0 5.1 1.64V7.94a5.35 5.35 0 0 1-3.6-2.12z"/></svg>
+            </a>
+            <a href="#" target="_blank" rel="noopener" aria-label="Telegram" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 4.5 2.7 11.9c-1.1.45-1.1 1.07-.2 1.35l4.8 1.5 1.85 5.6c.23.6.4.85.8.85.32 0 .47-.15.65-.33l1.7-1.63 3.5 2.58c.65.36 1.1.17 1.28-.6l2.5-11.7c.25-1.05-.4-1.53-1.08-1.02z"/></svg>
+            </a>
+        </div>
+        <p data-ar="© 2026 LBSK - جميع الحقوق محفوظة" data-en="© 2026 LBSK - All Rights Reserved">© 2026 LBSK - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
+```
